@@ -88,18 +88,44 @@ public class ScrabbleSet {
         tiles[25] = new Tile('Y', rand.nextInt(10) + 1);
         tiles[26] = new Tile('Z', rand.nextInt(10) + 1);
 
-        //instantiate a variable to keep track of the total number of tiles
-        int totalTiles = 0;
-
-        //instantiate a variable to keep track of the number of tiles for each letter
-        int letterTiles = 0;
-
-        //instantiate a variable to keep track of the number of tiles for the blank
-        int blankTiles = 0;
-
-        //instantiate a variable to keep track of the number of tiles for each letter
-        int[] letterTilesArray = new int[27];
+        letterCount = new int[rand.nextInt(100)+1];       
     }
+
+    //METHODS
+    //create a toString representation of a scrabbleset object
+    public String toString() {
+        String result = "";
+        for (int i = 0; i < tiles.length; i++) {
+            result += tiles[i].toString() + "\n";
+        }
+        return result;
+    }
+
+    //A method that takes one String parameter which will contain a word. The method will return the number of points for the word in Scrabble based on the letter counts in the ScrabbleSet object and the point values for each Tile object.
+    //If a word is invalid, either because it has non-letter characters or because it has more instances of any single letter than is present for that letter in the Scrabble set, the method should return 0.
+    public int getWordScore(String word) {
+        int score = 0;
+        //for each letter in the word
+        for (int i = 0; i < word.length(); i++) {
+            //if the letter is not a letter
+            if (!Character.isLetter(word.charAt(i))) {
+                return 0;
+            }
+            //if the letter is a letter
+            else {
+                //for each letter in the tiles array
+                for (int j = 0; j < tiles.length; j++) {
+                    //if the letter in the word is the same as the letter in the tiles array
+                    if (word.charAt(i) == tiles[j].getLetter()) {
+                        //add the point value of the letter to the score
+                        score += tiles[j].getPointValue();
+                    }
+                }
+            }
+        }
+        return score;
+    }
+    
 
     
 
