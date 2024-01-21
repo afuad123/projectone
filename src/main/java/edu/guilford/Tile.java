@@ -35,9 +35,7 @@ public class Tile {
     //METHODS
     //add a toString method that prints out the attributes of the Tile object
     public String toString() {
-        return "The letter on the tile is: " +
-                 + letter +
-                "and the value of the tile is: " + pointValue;
+        return "The letter on the tile is: " + letter + "and the value of the tile is: " + pointValue;
     }
 
 
