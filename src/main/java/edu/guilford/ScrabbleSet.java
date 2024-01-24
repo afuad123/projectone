@@ -121,7 +121,6 @@ public class ScrabbleSet {
          for (int i = 0; i < letterCount.length; i++) {
               letterCount[i] = rand.nextInt(3) + 1;
          }  
-
     }
 
     //METHODS
@@ -135,7 +134,27 @@ public class ScrabbleSet {
     public int getWordScore(String word) {
         int score = 0;
         String upperWord = word.toUpperCase();
-        // char currentChar = upperWord.charAt(i);
+        
+        int[] wordLetterCount = new int[27]; // Array to store the count of each letter in the word
+
+        // Calculate the count of each letter in the word
+        for (int i = 0; i < word.length(); i++) {
+            if (Character.isLetter(upperWord.charAt(i))) {
+                int index = upperWord.charAt(i) - 'A' + 1;
+                wordLetterCount[index]++;
+            }
+        }
+
+        // Check if the count of any letter in the word exceeds the count in the Scrabble set
+        for (int i = 0; i < word.length(); i++) {
+            if (Character.isLetter(upperWord.charAt(i))) {
+                int index = upperWord.charAt(i) - 'A' + 1;
+                if (wordLetterCount[index] > letterCount[index]) {
+                    return 00; // More of a letter than is present in the Scrabble set
+                }
+            }
+        }
+
         // for each letter in the word
         for (int i = 0; i < word.length(); i++) {
             // if the letter is not a letter
@@ -160,5 +179,6 @@ public class ScrabbleSet {
             }
         }
         return score;
+        
     }
 }
