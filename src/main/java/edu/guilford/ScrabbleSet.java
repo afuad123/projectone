@@ -135,6 +135,7 @@ public class ScrabbleSet {
     public int getWordScore(String word) {
         int score = 0;
         String upperWord = word.toUpperCase();
+        // char currentChar = upperWord.charAt(i);
         // for each letter in the word
         for (int i = 0; i < word.length(); i++) {
             // if the letter is not a letter
