@@ -33,10 +33,13 @@ public class Tile {
     }
 
     //METHODS
-    //add a toString method that prints out the attributes of the Tile object
+    @Override
     public String toString() {
-        return "The letter on the tile is: " + letter + "and the value of the tile is: " + pointValue;
+        return "Tile [letter=" + letter + ", pointValue=" + pointValue + "]";
     }
+
+    
+    
 
 
 }
