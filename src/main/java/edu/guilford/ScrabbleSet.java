@@ -156,28 +156,25 @@ public class ScrabbleSet {
         }
 
         // for each letter in the word
-        for (int i = 0; i < word.length(); i++) {
-            // if the letter is not a letter
-            if (!Character.isLetter(upperWord.charAt(i))) {
-                return 0;
-            } else if (upperWord.charAt(i) == 'A' || upperWord.charAt(i) == 'E' || upperWord.charAt(i) == 'I' || upperWord.charAt(i) == 'O'
-            || upperWord.charAt(i) == 'U' || upperWord.charAt(i) == 'L' || upperWord.charAt(i) == 'N' || upperWord.charAt(i) == 'S'
-            || upperWord.charAt(i) == 'T' || upperWord.charAt(i) == 'R') {
-                score += 1;
-            } else if (upperWord.charAt(i) == 'D' || upperWord.charAt(i) == 'G') {
-                score += 2;
-            } else if (upperWord.charAt(i) == 'B' || upperWord.charAt(i) == 'C' || upperWord.charAt(i) == 'M' || upperWord.charAt(i) == 'P') {
-                score += 3;
-            } else if (upperWord.charAt(i) == 'F' || upperWord.charAt(i) == 'H' || upperWord.charAt(i) == 'V' || upperWord.charAt(i) == 'W') {
-                score += 4;
-            } else if (upperWord.charAt(i) == 'K') {
-                score += 5;
-            } else if (upperWord.charAt(i) == 'J' || upperWord.charAt(i) == 'X') {
-                score += 8;
-            } else if (upperWord.charAt(i) == 'Q' || upperWord.charAt(i) == 'Z') {
-                score += 10;
-            }
+for (int i = 0; i < word.length(); i++) {
+    // if the letter is not a letter
+    if (!Character.isLetter(upperWord.charAt(i))) {
+        return 0;
+    } else {
+        char letter = Character.toUpperCase(upperWord.charAt(i));
+        int scoreToAdd = 0;
+        if ("AEIOULNRST".indexOf(letter) != -1) {
+            scoreToAdd = 1;
+        } else if ("DG".indexOf(letter) != -1) {
+            scoreToAdd = 2;
+        } else if ("BCMP".indexOf(letter) != -1) {
+            scoreToAdd = 3;
+        } else if ("FHVWY".indexOf(letter) != -1) {
+            scoreToAdd = 4;
         }
+        score += scoreToAdd;
+    }
+}
         return score;
         
     }
