@@ -12,7 +12,7 @@ public class ScrabbleProjectDriver {
     public static void main(String[] args) throws IOException {
         //Instantiate two ScrabbleSet objects, one for standard English and one using the random constructor.
         ScrabbleSet english = new ScrabbleSet("English");
-        ScrabbleSet random = new ScrabbleSet();
+        //ScrabbleSet random = new ScrabbleSet();
 
         //Calculate point values using the standard English ScrabbleSet object for a set of at least five test words: blue, lord, bag, shirt, hug
         System.out.println("The point value for the word blue is " + english.getWordScore("blue"));
@@ -31,7 +31,13 @@ public class ScrabbleProjectDriver {
             while ((line = br.readLine()) != null) {
                 String[] words = line.split("\\s+");
                 for (String word : words) {
+                    //if (word == "dæmon"){ 
+                    //listOfWords.remove("dæmon");   
+                    //}
+                    //else {
                     listOfWords.add(word);
+                    //}
+                    
                 }
             }
         } catch (IOException e) {
@@ -43,20 +49,25 @@ public class ScrabbleProjectDriver {
         int highestScore = 0;
         
        // Calculate the shortest invalid Scrabble word
-       String shortestInvalidWord = null;
-       int shortestInvalidLength = Integer.MAX_VALUE;
+       String shortestInvalidWord = "";
+       int shortestInvalidLength = 10;
 
        for (String word : listOfWords) {
-           int score = english.getWordScore(word);
-           if (score > highestScore) {
-               highestScore = score;
-               highestScoringWord = word;
-           }
-           if (english.getWordScore(word) == 00 && word.length() < shortestInvalidLength) {
-               shortestInvalidWord = word;
-               shortestInvalidLength = word.length();
-           }
-       }
+        if (word != "dæmon"){
+        
+        int score = english.getWordScore(word);
+        if (score > highestScore) {
+            highestScore = score;
+            System.out.println(highestScore);
+            highestScoringWord = word;
+            System.out.println(highestScoringWord);
+        }
+        if (english.getWordScore(word) == 00 && word.length() < shortestInvalidLength) {
+            shortestInvalidWord = word;
+            shortestInvalidLength = word.length();
+        }
+            }
+        }
 
        // Print the highest scoring word
        System.out.println("The word with the highest Scrabble score is: " + highestScoringWord);

@@ -15,9 +15,9 @@ public class ScrabbleSet {
     //CONSTRUCTORS
     //create a constructor that takes the language of the Scrabble set as a parameter
     public ScrabbleSet(String language) {
+        tiles = new Tile[27];
         //if the language is English
         if (language.equals("English")) {
-            tiles = new Tile[27];
             //instantiate a Tile object for each letter in the English Scrabble set
             tiles[0] = new Tile(' ', 0);
             tiles[1] = new Tile('A', 1);
@@ -84,6 +84,7 @@ public class ScrabbleSet {
     }
 
     public ScrabbleSet() {
+        tiles = new Tile[27];
         //instantiate a Tile object for each letter in the English Scrabble set
         tiles[0] = new Tile(' ', 0);
         tiles[1] = new Tile('A', 1);
@@ -141,7 +142,7 @@ public class ScrabbleSet {
         for (int i = 0; i < word.length(); i++) {
             if (Character.isLetter(upperWord.charAt(i))) {
                 int index = upperWord.charAt(i) - 'A' + 1;
-                wordLetterCount[index]++;
+                wordLetterCount[index] += 1;
             }
         }
 
@@ -156,26 +157,35 @@ public class ScrabbleSet {
         }
 
         // for each letter in the word
-for (int i = 0; i < word.length(); i++) {
-    // if the letter is not a letter
-    if (!Character.isLetter(upperWord.charAt(i))) {
-        return 0;
-    } else {
-        char letter = Character.toUpperCase(upperWord.charAt(i));
-        int scoreToAdd = 0;
-        if ("AEIOULNRST".indexOf(letter) != -1) {
-            scoreToAdd = 1;
-        } else if ("DG".indexOf(letter) != -1) {
-            scoreToAdd = 2;
-        } else if ("BCMP".indexOf(letter) != -1) {
-            scoreToAdd = 3;
-        } else if ("FHVWY".indexOf(letter) != -1) {
-            scoreToAdd = 4;
+        for (int i = 0; i < word.length(); i++) {
+            // if the letter is not a letter
+            char letter = Character.toUpperCase(upperWord.charAt(i));
+            if ("?!,'-./;".indexOf(letter) != -1) {
+                return 0;} 
+            else {
+                
+                int scoreToAdd = 0;
+                if ("AEIOULNRST".indexOf(letter) != -1) {
+                    scoreToAdd = 1;
+                } else if ("DG".indexOf(letter) != -1) {
+                    scoreToAdd = 2;
+                } else if ("BCMP".indexOf(letter) != -1) {
+                    scoreToAdd = 3;
+                } else if ("FHVWY".indexOf(letter) != -1) {
+                    scoreToAdd = 4;
+                } else if ("K".indexOf(letter) != -1) {
+                    scoreToAdd = 5;
+                } else if ("JX".indexOf(letter) != -1) {
+                    scoreToAdd = 8;
+                } else if ("QZ".indexOf(letter) != -1) {
+                    scoreToAdd = 10;
+                } else if ("æ".indexOf(letter) != -1) {
+                    scoreToAdd = 0;
+                }
+                score += scoreToAdd;
+            }
         }
-        score += scoreToAdd;
-    }
-}
-        return score;
+            return score;
         
-    }
+        }
 }
