@@ -12,7 +12,7 @@ public class ScrabbleProjectDriver {
     public static void main(String[] args) throws IOException {
         //Instantiate two ScrabbleSet objects, one for standard English and one using the random constructor.
         ScrabbleSet english = new ScrabbleSet("English");
-        //ScrabbleSet random = new ScrabbleSet();
+        ScrabbleSet random = new ScrabbleSet();
 
         //Calculate point values using the standard English ScrabbleSet object for a set of at least five test words: blue, lord, bag, shirt, hug
         System.out.println("The point value for the word blue is " + english.getWordScore("blue"));
@@ -43,7 +43,6 @@ public class ScrabbleProjectDriver {
         } catch (IOException e) {
             e.printStackTrace();
         }
-                
         // Calculate the highest Scrabble score and the corresponding word
         String highestScoringWord = "";
         int highestScore = 0;
@@ -52,28 +51,57 @@ public class ScrabbleProjectDriver {
        String shortestInvalidWord = "";
        int shortestInvalidLength = 10;
 
-       for (String word : listOfWords) {
-        if (word != "dæmon"){
-        
-        int score = english.getWordScore(word);
-        if (score > highestScore) {
-            highestScore = score;
-            System.out.println(highestScore);
-            highestScoringWord = word;
-            System.out.println(highestScoringWord);
-        }
-        if (english.getWordScore(word) == 00 && word.length() < shortestInvalidLength) {
-            shortestInvalidWord = word;
-            shortestInvalidLength = word.length();
-        }
+        for (String word : listOfWords) {
+            if (!word.contains("ê") && !word.contains("æ") && !word.contains("ô") && !word.contains("é")
+            && !word.contains("è")){
+            
+            int score = english.getWordScore(word);
+            if (score > highestScore) {
+                highestScore = score;
+                highestScoringWord = word;
             }
-        }
+            else if (score == -1 && word.length() < shortestInvalidLength) {
+                shortestInvalidWord = word;
+                shortestInvalidLength = word.length();
+            }
+                }
+            }
 
-       // Print the highest scoring word
-       System.out.println("The word with the highest Scrabble score is: " + highestScoringWord);
+        // Print the highest scoring word
+        System.out.println("The word with the highest Scrabble score is: " + highestScoringWord);
 
-       // Print the shortest invalid Scrabble word
-       System.out.println("The shortest invalid Scrabble word is: " + shortestInvalidWord);
+        // Print the shortest invalid Scrabble word
+        System.out.println("The shortest invalid Scrabble word is: " + shortestInvalidWord);
+
+        //RANDOMSET
+        String hsw = "";
+        int hs = 0;
+        
+       // Calculate the shortest invalid Scrabble word
+       String siw = "";
+       int sil = 10;
+
+        for (String word : listOfWords) {
+            if (!word.contains("ê") && !word.contains("æ") && !word.contains("ô") && !word.contains("é")
+            && !word.contains("è")){
+            
+            int score = random.getRandomWordScore(word);
+            if (score > hs) {
+                hs = score;
+                hsw = word;
+            }
+            else if (score == -1 && word.length() < sil) {
+                siw = word;
+                sil = word.length();
+            }
+                }
+            }
+
+        // Print the highest scoring word
+        System.out.println("The word with the highest Scrabble score is: " + hsw);
+
+        // Print the shortest invalid Scrabble word
+        System.out.println("The shortest invalid Scrabble word is: " + siw);
 
        
    }       
