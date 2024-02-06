@@ -1,0 +1,24 @@
+-encoding
+'UTF-8'
+-protected
+-source
+'1.8'
+-sourcepath
+'/Users/adrita/Documents/CTIS310/projectone/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2024. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/adrita/Documents/CTIS310/projectone/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'projectone 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' '/Users/adrita/Documents/CTIS310/projectone/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'projectone 1.0-SNAPSHOT API'

@@ -1,18 +1,26 @@
 package edu.guilford;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.io.BufferedReader;
+// import java.io.InputStream;
+// import java.io.InputStreamReader;
+// import java.util.ArrayList;
+// import java.util.List;
+// import java.io.BufferedReader;
 //import java.io.FileReader;
+
+/**This is a driver program for the Scrabble Project that tests the Word, Tile, and ScrabbleSet classes
+ * @author: A. Fuad
+ * @version: 2/6/2024
+ * @see Word
+ * @see ScrabbleSet
+ * @see Tile
+ */
 
 public class ScrabbleProjectDriver {
     public static void main(String[] args) throws IOException {
         //Instantiate two ScrabbleSet objects, one for standard English and one using the random constructor.
         ScrabbleSet english = new ScrabbleSet("English");
-        ScrabbleSet random = new ScrabbleSet();
+        //ScrabbleSet random = new ScrabbleSet();
 
         //store words in word objects
         Word word1 = new Word("blue", english);
