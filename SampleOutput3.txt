@@ -1,3 +1,16 @@
+The point value for the word blue is 6
+The point value for the word sword is 9
+The point value for the word cracker is 15
+The point value for the word shirt is 8
+The point value for the word hug is 7
+The point value for the word edits is 6
+The word blue compared to the word sword is -1
+The word sword compared to the word cracker is -1
+The word cracker compared to the word shirt is 1
+The word shirt compared to the word hug is 1
+The word blue compared to the word edits is -3
+
+
 Enter the size of the array: 10
 Original array: [Word: horograph, Score: 18, Word: traitory, Score: 11, Word: disponent, Score: 12, Word: turnscrew, Score: 14, Word: emulsoids, Score: 12, Word: interagreeing, Score: 15, Word: rheotron, Score: 11, Word: Endo, Score: 5, Word: eventlessness, Score: 16, Word: unmixed, Score: 17]
  
@@ -10,3 +23,15 @@ Reshuffled-array: [Word: traitory, Score: 11, Word: Endo, Score: 5, Word: horogr
  
 Sorted array using Quick Sort: [Word: Endo, Score: 5, Word: rheotron, Score: 11, Word: traitory, Score: 11, Word: disponent, Score: 12, Word: emulsoids, Score: 12, Word: turnscrew, Score: 14, Word: interagreeing, Score: 15, Word: eventlessness, Score: 16, Word: unmixed, Score: 17, Word: horograph, Score: 18]
 Quick Sort took 6.2895E-4 seconds
+
+The index of the target word using sequential search is: -1
+Sequential search took 1.7263E-4 seconds 
+The index of the target word using binary search is: -1
+Binary search took 5.7066E-5 seconds
+**Above is case where randomword was not present in the list; ran on 10 words**
+
+The index of the target word using sequential search is: 17
+Sequential search took 0.001348399 seconds
+The index of the target word using binary search is: 17
+Binary search took 1.03462E-4 seconds
+**Above is case where randomword was  present in the list, ran on 50 words**

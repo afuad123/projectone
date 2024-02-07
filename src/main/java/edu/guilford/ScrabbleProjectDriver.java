@@ -146,11 +146,11 @@ public class ScrabbleProjectDriver {
         //System.out.println(randomWord);
         randomWords[i] = randomWord;
     }
+    //comment out all print statements that print out arrays when testing large numbers or else program may crash
 
     //print out the array
-
     //System.out.println("Original array: " + Arrays.toString(randomWords));
-    System.out.println(" ");
+    //System.out.println(" ");
     //shuffle the array using swap
     for (int i = 0; i < randomWords.length; i++) {
         int randomIndex = (int) (Math.random() * randomWords.length);
@@ -166,8 +166,8 @@ public class ScrabbleProjectDriver {
     long endTime = System.nanoTime();
     long duration = (endTime - startTime);
     //print out the sorted array
-
     //System.out.println("Sorted array using Selection Sort: " + Arrays.toString(randomWords));
+
     System.out.println("Selection Sort took " + duration/1.e+9 + " seconds");
     System.out.println(" ");
 
@@ -178,18 +178,44 @@ public class ScrabbleProjectDriver {
     }
     //print out the shuffled array
     //System.out.println("Reshuffled-array: " + Arrays.toString(randomWords));
-    System.out.println(" ");
+    //System.out.println(" ");
     //implement the quickSort method on this array
     startTime = System.nanoTime();
     quickSort(randomWords);
     endTime = System.nanoTime();
     duration = (endTime - startTime);
     //print out the sorted array
-
     //System.out.println("Sorted array using Quick Sort: " + Arrays.toString(randomWords));
 
     System.out.println("Quick Sort took " + duration/1.e+9 + " seconds");
-    //System.out.println(" ");
+    System.out.println(" ");
+
+    //shuffle the array again
+    for (int i = 0; i < randomWords.length; i++) {
+        int randomIndex = (int) (Math.random() * randomWords.length);
+        swap(randomWords, i, randomIndex);
+    }
+    //run the sequential search algorithm on the array
+    Word target = new Word();
+    startTime = System.nanoTime();
+    int index = sequentialSearch(randomWords, target);
+    endTime = System.nanoTime();
+    duration = (endTime - startTime);
+    //print out the index of the target word
+    System.out.println("The index of the target word using sequential search is: " + index);
+    System.out.println("Sequential search took " + duration/1.e+9 + " seconds");
+    System.out.println(" ");
+
+    //run the binary search algorithm on the array
+    startTime = System.nanoTime();
+    index = binarySearch(randomWords, target);
+    endTime = System.nanoTime();
+    duration = (endTime - startTime);
+    //print out the index of the target word
+    System.out.println("The index of the target word using binary search is: " + index);
+    System.out.println("Binary search took " + duration/1.e+9 + " seconds");
+    System.out.println(" ");
+
 
       
    } 
@@ -227,7 +253,7 @@ public class ScrabbleProjectDriver {
 
         //while the pointers have not crossed paths
         while (left <= right) {
-            while ((array[left]).compareTo(pivotValue) < 0) {
+            while (left < high && array[left].compareTo(pivotValue) < 0) {
                 left++;
                 //results in the first object greater than the pivot
             }
@@ -256,6 +282,36 @@ public class ScrabbleProjectDriver {
     }
     public static void quickSort(Word[] array) {
         quickSort(array, 0, ((array.length) - 1));
+    }
+
+    //build a sequential search algorithm
+    public static int sequentialSearch(Word[] array, Word target) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].compareTo(target) == 0) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    //build a recursive binary search algorithm
+    public static int binarySearch(Word[] array, Word target) {
+        return binarySearch(array, target, 0, array.length - 1);
+    }
+
+    public static int binarySearch(Word[] array, Word target, int low, int high) {
+        if (low > high) { //base case
+            return -1;
+        }
+        int mid = (low + high) / 2;
+        if (array[mid].compareTo(target) == 0) { //success
+            return mid;
+        //choose a smaller problem to solve
+        } else if (array[mid].compareTo(target) > 0) {
+            return binarySearch(array, target, low, mid - 1);
+        } else {
+            return binarySearch(array, target, mid + 1, high);
+        }
     }
 }
  
