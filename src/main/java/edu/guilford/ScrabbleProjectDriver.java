@@ -185,9 +185,12 @@ public class ScrabbleProjectDriver {
     System.out.println("Sorted array using Quick Sort: " + Arrays.toString(randomWords));
     System.out.println("Quick Sort took " + duration/1.e+9 + " seconds");
     System.out.println(" ");
-    
-   
 
+
+    
+    
+    
+    
 
     
 

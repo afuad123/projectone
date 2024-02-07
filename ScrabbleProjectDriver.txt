@@ -1,0 +1,12 @@
+Enter the size of the array: 10
+Original array: [Word: horograph, Score: 18, Word: traitory, Score: 11, Word: disponent, Score: 12, Word: turnscrew, Score: 14, Word: emulsoids, Score: 12, Word: interagreeing, Score: 15, Word: rheotron, Score: 11, Word: Endo, Score: 5, Word: eventlessness, Score: 16, Word: unmixed, Score: 17]
+ 
+Shuffled array: [Word: traitory, Score: 11, Word: disponent, Score: 12, Word: interagreeing, Score: 15, Word: eventlessness, Score: 16, Word: turnscrew, Score: 14, Word: emulsoids, Score: 12, Word: horograph, Score: 18, Word: unmixed, Score: 17, Word: Endo, Score: 5, Word: rheotron, Score: 11]
+ 
+Sorted array using Selection Sort: [Word: Endo, Score: 5, Word: traitory, Score: 11, Word: rheotron, Score: 11, Word: emulsoids, Score: 12, Word: disponent, Score: 12, Word: turnscrew, Score: 14, Word: interagreeing, Score: 15, Word: eventlessness, Score: 16, Word: unmixed, Score: 17, Word: horograph, Score: 18]
+Selection Sort took 8.46027E-4 seconds
+ 
+Reshuffled-array: [Word: traitory, Score: 11, Word: Endo, Score: 5, Word: horograph, Score: 18, Word: eventlessness, Score: 16, Word: unmixed, Score: 17, Word: rheotron, Score: 11, Word: disponent, Score: 12, Word: interagreeing, Score: 15, Word: turnscrew, Score: 14, Word: emulsoids, Score: 12]
+ 
+Sorted array using Quick Sort: [Word: Endo, Score: 5, Word: rheotron, Score: 11, Word: traitory, Score: 11, Word: disponent, Score: 12, Word: emulsoids, Score: 12, Word: turnscrew, Score: 14, Word: interagreeing, Score: 15, Word: eventlessness, Score: 16, Word: unmixed, Score: 17, Word: horograph, Score: 18]
+Quick Sort took 6.2895E-4 seconds
