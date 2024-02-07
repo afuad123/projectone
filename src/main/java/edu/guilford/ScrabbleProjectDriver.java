@@ -165,7 +165,7 @@ public class ScrabbleProjectDriver {
     long duration = (endTime - startTime);
     //print out the sorted array
     System.out.println("Sorted array using Selection Sort: " + Arrays.toString(randomWords));
-    System.out.println("Selection Sort took " + duration/1.e+9 + " seconds");
+    System.out.println("Selection Sort took " + duration + " nanoseconds");
     System.out.println(" ");
 
     //shuffle the array again
@@ -183,18 +183,10 @@ public class ScrabbleProjectDriver {
     duration = (endTime - startTime);
     //print out the sorted array
     System.out.println("Sorted array using Quick Sort: " + Arrays.toString(randomWords));
-    System.out.println("Quick Sort took " + duration/1.e+9 + " seconds");
+    System.out.println("Quick Sort took " + duration + " nanoseconds");
     System.out.println(" ");
 
-
-    
-    
-    
-    
-
-    
-
-       
+      
    } 
 
    //methods that will be used in this driver program: swap, selectionSort, partition, quickSort
