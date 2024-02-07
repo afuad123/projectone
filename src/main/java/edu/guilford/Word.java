@@ -23,6 +23,8 @@ public class Word implements Comparable<Word> {
     //CONSTRUCTORS
     /** 
      * Constructor that creates the default word object
+     * @param word: a string that stores the word
+     * @param scrabbleSet: a ScrabbleSet object that stores the scrabbleset used along with word
      * */
     public Word(String word, ScrabbleSet scrabbleSet) {
         this.word = word;
@@ -59,6 +61,7 @@ public class Word implements Comparable<Word> {
     //METHODS
     /**
      * A method that return the Scrabble score of the word using the Scrabbleset
+     * @return the score of the word
      * */
     public int getScore() {
         return scrabbleSet.getWordScore(word);
@@ -66,7 +69,9 @@ public class Word implements Comparable<Word> {
     /** 
      * A compareTo method that returns 0 if two words are identical, 
      * returns one if otherWord has a smaller score than the current Word, 
-     * and returns -1 if otherWord has a larger score than the current Word.*/
+     * and returns -1 if otherWord has a larger score than the current Word.
+     * @param otherWord: the other word to compare the current word to
+     * @return a value of -1 or 1*/
     public int compareTo(Word otherWord) {
         if (this.getScore() == otherWord.getScore()) {
             //return the value of the compareTo method from String, comparing the String attributes of each Word.
@@ -78,7 +83,10 @@ public class Word implements Comparable<Word> {
         }
     }
 
-    //toString method
+    /**
+     * A method that returns the word and its score in a string format
+     * @return a string of the word and its score
+    */
     @Override
     public String toString() {
         return "Word: " + word + ", Score: " + getScore();
