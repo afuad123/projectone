@@ -148,7 +148,8 @@ public class ScrabbleProjectDriver {
     }
 
     //print out the array
-    System.out.println("Original array: " + Arrays.toString(randomWords));
+
+    //System.out.println("Original array: " + Arrays.toString(randomWords));
     System.out.println(" ");
     //shuffle the array using swap
     for (int i = 0; i < randomWords.length; i++) {
@@ -156,7 +157,8 @@ public class ScrabbleProjectDriver {
         swap(randomWords, i, randomIndex);
     }
     //print out the shuffled array
-    System.out.println("Shuffled array: " + Arrays.toString(randomWords));
+
+    //System.out.println("Shuffled array: " + Arrays.toString(randomWords));
     System.out.println(" ");
     //implement the selectionSort method on this array
     long startTime = System.nanoTime();
@@ -164,8 +166,9 @@ public class ScrabbleProjectDriver {
     long endTime = System.nanoTime();
     long duration = (endTime - startTime);
     //print out the sorted array
-    System.out.println("Sorted array using Selection Sort: " + Arrays.toString(randomWords));
-    System.out.println("Selection Sort took " + duration + " nanoseconds");
+
+    //System.out.println("Sorted array using Selection Sort: " + Arrays.toString(randomWords));
+    System.out.println("Selection Sort took " + duration/1.e+9 + " seconds");
     System.out.println(" ");
 
     //shuffle the array again
@@ -174,7 +177,7 @@ public class ScrabbleProjectDriver {
         swap(randomWords, i, randomIndex);
     }
     //print out the shuffled array
-    System.out.println("Reshuffled-array: " + Arrays.toString(randomWords));
+    //System.out.println("Reshuffled-array: " + Arrays.toString(randomWords));
     System.out.println(" ");
     //implement the quickSort method on this array
     startTime = System.nanoTime();
@@ -182,9 +185,11 @@ public class ScrabbleProjectDriver {
     endTime = System.nanoTime();
     duration = (endTime - startTime);
     //print out the sorted array
-    System.out.println("Sorted array using Quick Sort: " + Arrays.toString(randomWords));
-    System.out.println("Quick Sort took " + duration + " nanoseconds");
-    System.out.println(" ");
+
+    //System.out.println("Sorted array using Quick Sort: " + Arrays.toString(randomWords));
+
+    System.out.println("Quick Sort took " + duration/1.e+9 + " seconds");
+    //System.out.println(" ");
 
       
    } 
@@ -222,16 +227,16 @@ public class ScrabbleProjectDriver {
 
         //while the pointers have not crossed paths
         while (left <= right) {
-            while (left <= right && array[left].compareTo(pivotValue) <= 0) {
+            while ((array[left]).compareTo(pivotValue) < 0) {
                 left++;
                 //results in the first object greater than the pivot
             }
-            while (left <= right && array[right].compareTo(pivotValue) > 0) {
+            while (right >= 0 && (array[right]).compareTo(pivotValue) > 0) {
                 right--;
                 //results in the first object less than the pivot
             }
             //swap the two objects under condition that the objects still haven't crossed paths
-            if (left < right) {
+            if (left <= right) {
                 swap(array,left,right);
                 left++;
                 right--;
@@ -245,12 +250,12 @@ public class ScrabbleProjectDriver {
     public static void quickSort(Word[] array, int low, int high) {
         if (low < high) {
             int pivot = partition(array,low,high);
-            quickSort(array,low,pivot-1);
-            quickSort(array,pivot+1,high);
+            quickSort(array, low, (pivot - 1));
+            quickSort(array, (pivot + 1) ,high);
         }
     }
     public static void quickSort(Word[] array) {
-        quickSort(array, 0, array.length - 1);
+        quickSort(array, 0, ((array.length) - 1));
     }
 }
  
