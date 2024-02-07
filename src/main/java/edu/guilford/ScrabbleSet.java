@@ -3,17 +3,26 @@ package edu.guilford;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * This is a class definition file for the "ScrabbleSet" class which defines a ScrabbleSet object.
+ * @author A. Fuad
+ * @version 2/7/24
+ 
+ */
+
 public class ScrabbleSet {
     Random rand = new Random();
     //ATTRIBUTES
-    //instantiate a list of Tile objects for the letters and the blank tile; the blank tile should be represented by a space, ' '
+    /**Instantiates a list of Tile objects for the letters and the blank tile.*/
     private Tile[] tiles;
 
-    //instantiate a list that provides a count of each letter in the Scrabble set
+    /**Instantiates a list that provides a count of each letter in the Scrabble set*/
     private int[] letterCount;
 
     //CONSTRUCTORS
-    //create a constructor that takes the language of the Scrabble set as a parameter
+    /**Builds a ScrabbleSet object specified by language.
+     * @param language the language of the ScrabbleSet; default English
+    */
     public ScrabbleSet(String language) {
         tiles = new Tile[27];
         //if the language is English
@@ -83,6 +92,9 @@ public class ScrabbleSet {
         }
     }
 
+    /**
+     * Builds a ScrabbleSet object with the default language of English but a random amount of each letter.
+     */
     public ScrabbleSet() {
         tiles = new Tile[27];
         //instantiate a Tile object for each letter in the English Scrabble set
@@ -124,13 +136,19 @@ public class ScrabbleSet {
     }
 
     //METHODS
+    /**Returns a string representation of the ScrabbleSet object.
+     * @return a string representation of the ScrabbleSet object
+    */
     @Override
     public String toString() {
         return "ScrabbleSet [tiles=" + Arrays.toString(tiles) + ", letterCount="
                 + Arrays.toString(letterCount) + "]";
     }
     
-    //write a method that calculates the score of a word
+    /**Calculates the score of a word
+     * @param word the word to calculate the score of
+     * @return the score of the word
+    */
     public int getWordScore(String word) {
         int score = 0;
         String upperWord = word.toUpperCase();
@@ -184,62 +202,4 @@ public class ScrabbleSet {
             return score;
         
         }
-        //write a method that calculates the score of a word
-        public int getRandomWordScore(String word) {
-            int score = 0;
-            String upperWord = word.toUpperCase();
-            
-            int[] wordLetterCount = new int[27]; // Array to store the count of each letter in the word
-
-            // Calculate the count of each letter in the word
-            for (int i = 0; i < word.length(); i++) {
-                if (Character.isLetter(upperWord.charAt(i))) {
-                    int index = upperWord.charAt(i) - 'A' + 1;
-                    wordLetterCount[index] += 1;
-                }
-            }
-
-            // Check if the count of any letter in the word exceeds the count in the Scrabble set
-            for (int i = 0; i < word.length(); i++) {
-                if (Character.isLetter(upperWord.charAt(i))) {
-                    int index = upperWord.charAt(i) - 'A' + 1;
-                    if (wordLetterCount[index] > letterCount[index]) {
-                        return -1; // More of a letter than is present in the Scrabble set
-                    }
-                }
-            }
-
-            // for each letter in the word
-            for (int i = 0; i < word.length(); i++) {
-                // if the letter is not a letter
-                char letter = Character.toUpperCase(upperWord.charAt(i));
-                if ("?!,'-./;".indexOf(letter) != -1) {
-                    return 0;} 
-                else {
-                    
-                    int scoreToAdd = 0;
-                    if ("AEIOULNRST".indexOf(letter) != -1) {
-                        scoreToAdd = 1;
-                    } else if ("DG".indexOf(letter) != -1) {
-                        scoreToAdd = 2;
-                    } else if ("BCMP".indexOf(letter) != -1) {
-                        scoreToAdd = 3;
-                    } else if ("FHVWY".indexOf(letter) != -1) {
-                        scoreToAdd = 4;
-                    } else if ("K".indexOf(letter) != -1) {
-                        scoreToAdd = 5;
-                    } else if ("JX".indexOf(letter) != -1) {
-                        scoreToAdd = 8;
-                    } else if ("QZ".indexOf(letter) != -1) {
-                        scoreToAdd = 10;
-                    } else if ("æ".indexOf(letter) != -1) {
-                        scoreToAdd = 0;
-                    }
-                    score += scoreToAdd;
-                }
-            }
-                return score;
-            
-            }
-
 }
