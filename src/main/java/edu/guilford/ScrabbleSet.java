@@ -159,11 +159,10 @@ public class ScrabbleSet {
         for (int i = 0; i < word.length(); i++) {
             // if the letter is not a letter
             char letter = Character.toUpperCase(upperWord.charAt(i));
+            int scoreToAdd = 0;
             if ("?!,'-./;".indexOf(letter) != -1) {
-                return 0;} 
+                scoreToAdd += 0;} 
             else {
-                
-                int scoreToAdd = 0;
                 if ("AEIOULNRST".indexOf(letter) != -1) {
                     scoreToAdd = 1;
                 } else if ("DG".indexOf(letter) != -1) {
