@@ -1,6 +1,6 @@
 package edu.guilford;
 
-import java.io.FileWriter;
+//import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 // import java.io.InputStream;
@@ -34,19 +34,19 @@ public class ScrabbleProjectDriver {
         Word word6 = new Word("edits", english);
 
         //Calculate point values using the standard English ScrabbleSet object for a set of at least five test words, now using word.getScore()
-        // System.out.println("The point value for the word blue is " + word1.getScore());
-        // System.out.println("The point value for the word sword is " + word2.getScore());
-        // System.out.println("The point value for the word cracker is " + word3.getScore());
-        // System.out.println("The point value for the word shirt is " + word4.getScore());
-        // System.out.println("The point value for the word hug is " + word5.getScore());
-        // System.out.println("The point value for the word edits is " + word6.getScore());
+        System.out.println("The point value for the word blue is " + word1.getScore());
+        System.out.println("The point value for the word sword is " + word2.getScore());
+        System.out.println("The point value for the word cracker is " + word3.getScore());
+        System.out.println("The point value for the word shirt is " + word4.getScore());
+        System.out.println("The point value for the word hug is " + word5.getScore());
+        System.out.println("The point value for the word edits is " + word6.getScore());
 
-        // //Compare the words using the compareTo method
-        // System.out.println("The word blue compared to the word sword is " + word1.compareTo(word2));
-        // System.out.println("The word sword compared to the word cracker is " + word2.compareTo(word3));
-        // System.out.println("The word cracker compared to the word shirt is " + word3.compareTo(word4));
-        // System.out.println("The word shirt compared to the word hug is " + word4.compareTo(word5));
-        // System.out.println("The word blue compared to the word edits is " + word1.compareTo(word6));
+        //Compare the words using the compareTo method
+        System.out.println("The word blue compared to the word sword is " + word1.compareTo(word2));
+        System.out.println("The word sword compared to the word cracker is " + word2.compareTo(word3));
+        System.out.println("The word cracker compared to the word shirt is " + word3.compareTo(word4));
+        System.out.println("The word shirt compared to the word hug is " + word4.compareTo(word5));
+        System.out.println("The word blue compared to the word edits is " + word1.compareTo(word6));
 
         //below is Project 1 work
     //     String filePath = "frankenstein.txt";
