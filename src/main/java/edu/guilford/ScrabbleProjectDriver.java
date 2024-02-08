@@ -220,13 +220,21 @@ public class ScrabbleProjectDriver {
       
    } 
 
-   //methods that will be used in this driver program: swap, selectionSort, partition, quickSort
+   /**
+    * This method swaps two objects in an array
+    * @param array the array of random word objects
+    * @param i the first object's location in the array
+    * @param j the second object's location in the array
+    */
     public static void swap (Object[] array, int i, int j) {
         Object temp = array[i];
         array[i] = array[j];
         array[j] = temp;
     }      
-   //create a selectionSort method to sort the random word objects by score from least to greatest
+   /**
+    * This method sorts an array of random word objects using the selection sort algorithm
+    * @param arr the array of random word objects
+    */ 
     public static void selectionSort(Word[] arr) {
      for (int i = 0; i < arr.length - 1; i++) {
           int minIndex = i;
@@ -241,7 +249,13 @@ public class ScrabbleProjectDriver {
      }
                
     }
-    //partition method for quicksort
+    /**
+     * The partition method that partitions the array into two parts, before and after the pivot
+     * @param array the array of random word objects
+     * @param low the left "low" pointer
+     * @param high the right "high" pointer
+     * @return the final place of the pivot
+     */
     public static int partition(Word[] array, int low, int high) {
         //low is start of array, high is end, find pivot (middle)
         int pivot = (low + high) / 2;
@@ -272,7 +286,12 @@ public class ScrabbleProjectDriver {
         swap(array,high,left); //now the pivot is in the correct place
         return left; //report the final place of the pivot
     }
-    //quicksort method
+    /**
+     * This method sorts an array of random word objects using the quick sort algorithm
+     * @param array the array of random word objects
+     * @param low the left "low" pointer
+     * @param high the right "high" pointer
+     */
     public static void quickSort(Word[] array, int low, int high) {
         if (low < high) {
             int pivot = partition(array,low,high);
@@ -280,11 +299,20 @@ public class ScrabbleProjectDriver {
             quickSort(array, (pivot + 1) ,high);
         }
     }
+    /**
+     * This method sorts an array of random word objects using the recursive quick sort algorithm
+     * @param array the array of random word objects
+     */
     public static void quickSort(Word[] array) {
         quickSort(array, 0, ((array.length) - 1));
     }
 
-    //build a sequential search algorithm
+    /**
+     * This method searches for a target word in an array of random word objects using the sequential search algorithm
+     * @param array the array of random word objects
+     * @param target the target word 
+     * @return the index of the target word
+     */
     public static int sequentialSearch(Word[] array, Word target) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].compareTo(target) == 0) {
@@ -294,11 +322,23 @@ public class ScrabbleProjectDriver {
         return -1;
     }
 
-    //build a recursive binary search algorithm
+    /**
+     * This method searches for a target word in an array of random word objects using the binary search algorithm
+     * @param array the array of random word objects
+     * @param target the target word
+     * @return the index of the target word
+     */
     public static int binarySearch(Word[] array, Word target) {
         return binarySearch(array, target, 0, array.length - 1);
     }
-
+    /**
+     * This method searches for a target word in an array of random word objects using the recursive binary search algorithm
+     * @param array the array of random word objects
+     * @param target the target word
+     * @param low the left "low" pointer
+     * @param high the right "high" pointer
+     * @return the index of the target word
+     */
     public static int binarySearch(Word[] array, Word target, int low, int high) {
         if (low > high) { //base case
             return -1;
