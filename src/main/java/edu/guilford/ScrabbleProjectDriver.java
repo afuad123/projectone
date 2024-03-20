@@ -1,5 +1,6 @@
 package edu.guilford;
 
+import java.io.FileWriter;
 //import java.io.FileWriter;
 import java.io.IOException;
 //import java.util.Arrays;
@@ -22,31 +23,32 @@ import java.util.Scanner;
 public class ScrabbleProjectDriver {
     public static void main(String[] args) throws IOException {
         //Instantiate two ScrabbleSet objects, one for standard English and one using the random constructor.
-        ScrabbleSet english = new ScrabbleSet("English");
-        //ScrabbleSet random = new ScrabbleSet();
 
-        //store words in word objects
-        Word word1 = new Word("blue", english);
-        Word word2 = new Word("sword", english);
-        Word word3 = new Word("cracker", english);
-        Word word4 = new Word("shirt", english);
-        Word word5 = new Word("hug", english);
-        Word word6 = new Word("edits", english);
 
-        //Calculate point values using the standard English ScrabbleSet object for a set of at least five test words, now using word.getScore()
-        System.out.println("The point value for the word blue is " + word1.getScore());
-        System.out.println("The point value for the word sword is " + word2.getScore());
-        System.out.println("The point value for the word cracker is " + word3.getScore());
-        System.out.println("The point value for the word shirt is " + word4.getScore());
-        System.out.println("The point value for the word hug is " + word5.getScore());
-        System.out.println("The point value for the word edits is " + word6.getScore());
+        //PROJECT 1
 
-        //Compare the words using the compareTo method
-        System.out.println("The word blue compared to the word sword is " + word1.compareTo(word2));
-        System.out.println("The word sword compared to the word cracker is " + word2.compareTo(word3));
-        System.out.println("The word cracker compared to the word shirt is " + word3.compareTo(word4));
-        System.out.println("The word shirt compared to the word hug is " + word4.compareTo(word5));
-        System.out.println("The word blue compared to the word edits is " + word1.compareTo(word6));
+        // //store words in word objects
+        // Word word1 = new Word("blue", english);
+        // Word word2 = new Word("sword", english);
+        // Word word3 = new Word("cracker", english);
+        // Word word4 = new Word("shirt", english);
+        // Word word5 = new Word("hug", english);
+        // Word word6 = new Word("edits", english);
+
+        // //Calculate point values using the standard English ScrabbleSet object for a set of at least five test words, now using word.getScore()
+        // System.out.println("The point value for the word blue is " + word1.getScore());
+        // System.out.println("The point value for the word sword is " + word2.getScore());
+        // System.out.println("The point value for the word cracker is " + word3.getScore());
+        // System.out.println("The point value for the word shirt is " + word4.getScore());
+        // System.out.println("The point value for the word hug is " + word5.getScore());
+        // System.out.println("The point value for the word edits is " + word6.getScore());
+
+        // //Compare the words using the compareTo method
+        // System.out.println("The word blue compared to the word sword is " + word1.compareTo(word2));
+        // System.out.println("The word sword compared to the word cracker is " + word2.compareTo(word3));
+        // System.out.println("The word cracker compared to the word shirt is " + word3.compareTo(word4));
+        // System.out.println("The word shirt compared to the word hug is " + word4.compareTo(word5));
+        // System.out.println("The word blue compared to the word edits is " + word1.compareTo(word6));
 
         //below is Project 1 work
     //     String filePath = "frankenstein.txt";
@@ -131,94 +133,138 @@ public class ScrabbleProjectDriver {
     //     // Print the shortest invalid Scrabble word
     //     System.out.println("The shortest invalid Scrabble word is: " + siw);
 
-    //start of project 3 work
+    //PROJECT 3
+
     //generate an array of random objects, and size of the array is determined by user input
-    int size = 0;
+    // int size = 0;
+    // Scanner scanner = new Scanner(System.in);
+    // System.out.println("Enter the size of the array: ");
+    // size = scanner.nextInt();
+    // scanner.close();
+    // //use the size to create an array of random words using the random Word() constructor
+    // Word[] randomWords = new Word[size];
+    // for (int i = 0; i < size; i++)
+    // {
+    //     Word randomWord = new Word();
+    //     //System.out.println(randomWord);
+    //     randomWords[i] = randomWord;
+    // }
+    // //comment out all print statements that print out arrays when testing large numbers or else program may crash
+
+    // //print out the array
+    // //System.out.println("Original array: " + Arrays.toString(randomWords));
+    // //System.out.println(" ");
+    // //shuffle the array using swap
+    // for (int i = 0; i < randomWords.length; i++) {
+    //     int randomIndex = (int) (Math.random() * randomWords.length);
+    //     swap(randomWords, i, randomIndex);
+    // }
+    // //print out the shuffled array
+
+    // //System.out.println("Shuffled array: " + Arrays.toString(randomWords));
+    // System.out.println(" ");
+    // //implement the selectionSort method on this array
+    // long startTime = System.nanoTime();
+    // selectionSort(randomWords);
+    // long endTime = System.nanoTime();
+    // long duration = (endTime - startTime);
+    // //print out the sorted array
+    // //System.out.println("Sorted array using Selection Sort: " + Arrays.toString(randomWords));
+
+    // System.out.println("Selection Sort took " + duration/1.e+9 + " seconds");
+    // System.out.println(" ");
+
+    // //shuffle the array again
+    // for (int i = 0; i < randomWords.length; i++) {
+    //     int randomIndex = (int) (Math.random() * randomWords.length);
+    //     swap(randomWords, i, randomIndex);
+    // }
+    // //print out the shuffled array
+    // //System.out.println("Reshuffled-array: " + Arrays.toString(randomWords));
+    // //System.out.println(" ");
+    // //implement the quickSort method on this array
+    // startTime = System.nanoTime();
+    // quickSort(randomWords);
+    // endTime = System.nanoTime();
+    // duration = (endTime - startTime);
+    // //print out the sorted array
+    // //System.out.println("Sorted array using Quick Sort: " + Arrays.toString(randomWords));
+
+    // System.out.println("Quick Sort took " + duration/1.e+9 + " seconds");
+    // System.out.println(" ");
+
+    // //shuffle the array again
+    // for (int i = 0; i < randomWords.length; i++) {
+    //     int randomIndex = (int) (Math.random() * randomWords.length);
+    //     swap(randomWords, i, randomIndex);
+    // }
+    // //run the sequential search algorithm on the array
+    // Word target = new Word();
+    // startTime = System.nanoTime();
+    // int index = sequentialSearch(randomWords, target);
+    // endTime = System.nanoTime();
+    // duration = (endTime - startTime);
+    // //print out the index of the target word
+    // System.out.println("The index of the target word using sequential search is: " + index);
+    // System.out.println("Sequential search took " + duration/1.e+9 + " seconds");
+    // System.out.println(" ");
+
+    // //run the binary search algorithm on the array
+    // startTime = System.nanoTime();
+    // index = binarySearch(randomWords, target);
+    // endTime = System.nanoTime();
+    // duration = (endTime - startTime);
+    // //print out the index of the target word
+    // System.out.println("The index of the target word using binary search is: " + index);
+    // System.out.println("Binary search took " + duration/1.e+9 + " seconds");
+    // System.out.println(" ");
+
+    //PROJECT 6
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Enter the size of the array: ");
-    size = scanner.nextInt();
-    scanner.close();
-    //use the size to create an array of random words using the random Word() constructor
-    Word[] randomWords = new Word[size];
-    for (int i = 0; i < size; i++)
-    {
-        Word randomWord = new Word();
-        //System.out.println(randomWord);
-        randomWords[i] = randomWord;
+    System.out.println("Enter a word: ");
+    String word = scanner.nextLine();
+    System.out.println("Enter a language: ");
+    ScrabbleSet scrabbleSet = new ScrabbleSet(scanner.nextLine());
+    if (word.equals("no") || word.equals("NO") || word.equals("No")) {
+        //stop calculating the score and exit the program
+        System.out.println("Noted. Move on to the next step.");
+        scanner.close();
+        //option for user to upload a file of words to calculate their scores
+        Scanner scanner2 = new Scanner(System.in);
+        System.out.println("Enter the full name of the file you wish to analyze: ");
+        String filePath = scanner2.nextLine();
+        System.out.println("The filename is: " + filePath);
+        scanner2.close();
+        //create a Word object using the user input and calculate its score
+        Word[] words = new Word[1000];
+        int i = 0;
+        //calculate the score of each word in the file
+        Scanner scanner3 = new Scanner(filePath); 
+            while (scanner3.hasNextLine()) {
+                String line = scanner3.nextLine();
+                words[i] = new Word(line, scrabbleSet);
+                System.out.println("The point value for the word " + line + " is " + words[i].getScore());
+                i++;
+            }
+        //store all the scores in a new txt file
+        FileWriter writer = new FileWriter("scores.txt");
+        for (int j = 0; j < i; j++) {
+            //write the word and its corresponding score
+            writer.write(words[j].getWord() + " " + words[j].getScore() + "\n");
+        }
+        //tell the user the file has been created
+        System.out.println("The file of scores has been created");
+        scanner3.close();
+        writer.close();
     }
-    //comment out all print statements that print out arrays when testing large numbers or else program may crash
-
-    //print out the array
-    //System.out.println("Original array: " + Arrays.toString(randomWords));
-    //System.out.println(" ");
-    //shuffle the array using swap
-    for (int i = 0; i < randomWords.length; i++) {
-        int randomIndex = (int) (Math.random() * randomWords.length);
-        swap(randomWords, i, randomIndex);
+    else {
+        System.out.println("Your word was: " + word.toUpperCase());
+        scanner.close();
+        //create a Word object using the user input and calculate its score
+        Word userWord = new Word(word, scrabbleSet);
+        System.out.println("The point value for the word " + word + " is " + userWord.getScore());  
     }
-    //print out the shuffled array
-
-    //System.out.println("Shuffled array: " + Arrays.toString(randomWords));
-    System.out.println(" ");
-    //implement the selectionSort method on this array
-    long startTime = System.nanoTime();
-    selectionSort(randomWords);
-    long endTime = System.nanoTime();
-    long duration = (endTime - startTime);
-    //print out the sorted array
-    //System.out.println("Sorted array using Selection Sort: " + Arrays.toString(randomWords));
-
-    System.out.println("Selection Sort took " + duration/1.e+9 + " seconds");
-    System.out.println(" ");
-
-    //shuffle the array again
-    for (int i = 0; i < randomWords.length; i++) {
-        int randomIndex = (int) (Math.random() * randomWords.length);
-        swap(randomWords, i, randomIndex);
-    }
-    //print out the shuffled array
-    //System.out.println("Reshuffled-array: " + Arrays.toString(randomWords));
-    //System.out.println(" ");
-    //implement the quickSort method on this array
-    startTime = System.nanoTime();
-    quickSort(randomWords);
-    endTime = System.nanoTime();
-    duration = (endTime - startTime);
-    //print out the sorted array
-    //System.out.println("Sorted array using Quick Sort: " + Arrays.toString(randomWords));
-
-    System.out.println("Quick Sort took " + duration/1.e+9 + " seconds");
-    System.out.println(" ");
-
-    //shuffle the array again
-    for (int i = 0; i < randomWords.length; i++) {
-        int randomIndex = (int) (Math.random() * randomWords.length);
-        swap(randomWords, i, randomIndex);
-    }
-    //run the sequential search algorithm on the array
-    Word target = new Word();
-    startTime = System.nanoTime();
-    int index = sequentialSearch(randomWords, target);
-    endTime = System.nanoTime();
-    duration = (endTime - startTime);
-    //print out the index of the target word
-    System.out.println("The index of the target word using sequential search is: " + index);
-    System.out.println("Sequential search took " + duration/1.e+9 + " seconds");
-    System.out.println(" ");
-
-    //run the binary search algorithm on the array
-    startTime = System.nanoTime();
-    index = binarySearch(randomWords, target);
-    endTime = System.nanoTime();
-    duration = (endTime - startTime);
-    //print out the index of the target word
-    System.out.println("The index of the target word using binary search is: " + index);
-    System.out.println("Binary search took " + duration/1.e+9 + " seconds");
-    System.out.println(" ");
-
-
-      
-   } 
+} 
 
    /**
     * This method swaps two objects in an array

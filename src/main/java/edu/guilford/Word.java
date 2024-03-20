@@ -31,6 +31,10 @@ public class Word implements Comparable<Word> {
         this.scrabbleSet = scrabbleSet;
     }
 
+    public String getWord() {
+        return word;
+    }
+
     /**
      * A constructor that generates a  String of random length 3-12 characters and with randomly determined characters
      * */
