@@ -221,37 +221,49 @@ public class ScrabbleProjectDriver {
 
     //PROJECT 6
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Enter a word: ");
-    String word = scanner.nextLine();
     System.out.println("Enter a language: ");
     ScrabbleSet scrabbleSet = new ScrabbleSet(scanner.nextLine());
+    System.out.println("Enter a word: ");
+    String word = scanner.nextLine();
     if (word.equals("no") || word.equals("NO") || word.equals("No")) {
         //stop calculating the score and exit the program
         System.out.println("Noted. Move on to the next step.");
-        scanner.close();
+        //scanner.close();
         //option for user to upload a file of words to calculate their scores
-        Scanner scanner2 = new Scanner(System.in);
+       // Scanner scanner2 = new Scanner(System.in);
         System.out.println("Enter the full name of the file you wish to analyze: ");
-        String filePath = scanner2.nextLine();
+        String filePath = scanner.nextLine();
         System.out.println("The filename is: " + filePath);
-        scanner2.close();
+        scanner.close();
         //create a Word object using the user input and calculate its score
         Word[] words = new Word[1000];
         int i = 0;
-        //calculate the score of each word in the file
-        Scanner scanner3 = new Scanner(filePath); 
-            while (scanner3.hasNextLine()) {
-                String line = scanner3.nextLine();
-                words[i] = new Word(line, scrabbleSet);
-                System.out.println("The point value for the word " + line + " is " + words[i].getScore());
-                i++;
-            }
-        //store all the scores in a new txt file
+        // //calculate the score of each word in the file
+        // Scanner scanner3 = new Scanner(filePath); 
+        //     while (scanner3.hasNextLine()) {
+        //         String line = scanner3.nextLine();
+        //         words[i] = new Word(line, scrabbleSet);
+        //         System.out.println("The point value for the word " + line + " is " + words[i].getScore());
+        //         i++;
+        //     }
+        // //store all the scores in a new txt file
+        // FileWriter writer = new FileWriter("scores.txt");
+        // for (int j = 0; j < i; j++) {
+        //     //write the word and its corresponding score
+        //     writer.write(words[j].getWord() + " " + words[j].getScore() + "\n");
+        // }
+        
+
+        //calculate the score of each word in the file and store all the scores in a new txt file
+        Scanner scanner3 = new Scanner(filePath);
         FileWriter writer = new FileWriter("scores.txt");
-        for (int j = 0; j < i; j++) {
-            //write the word and its corresponding score
-            writer.write(words[j].getWord() + " " + words[j].getScore() + "\n");
+        while (scanner3.hasNextLine()) {
+            String line = scanner3.nextLine();
+            words[i] = new Word(line, scrabbleSet);
+            writer.write(words[i].getWord() + " " + words[i].getScore() + "\n");
+            i++;
         }
+        
         //tell the user the file has been created
         System.out.println("The file of scores has been created");
         scanner3.close();
