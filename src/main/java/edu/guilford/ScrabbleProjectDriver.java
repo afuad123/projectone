@@ -1,8 +1,12 @@
 package edu.guilford;
 
+import java.io.BufferedReader;
 import java.io.FileWriter;
 //import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 //import java.util.Arrays;
 // import java.io.InputStream;
 // import java.io.InputStreamReader;
@@ -235,40 +239,50 @@ public class ScrabbleProjectDriver {
         String filePath = scanner.nextLine();
         System.out.println("The filename is: " + filePath);
         scanner.close();
-        //create a Word object using the user input and calculate its score
-        Word[] words = new Word[1000];
-        int i = 0;
-        // //calculate the score of each word in the file
-        // Scanner scanner3 = new Scanner(filePath); 
-        //     while (scanner3.hasNextLine()) {
-        //         String line = scanner3.nextLine();
-        //         words[i] = new Word(line, scrabbleSet);
-        //         System.out.println("The point value for the word " + line + " is " + words[i].getScore());
-        //         i++;
-        //     }
-        // //store all the scores in a new txt file
-        // FileWriter writer = new FileWriter("scores.txt");
-        // for (int j = 0; j < i; j++) {
-        //     //write the word and its corresponding score
-        //     writer.write(words[j].getWord() + " " + words[j].getScore() + "\n");
-        // }
+        // //create a Word object using the user input and calculate its score
+        // Word[] words = new Word[1000];
+        // int i = 0;
+        // // //calculate the score of each word in the file
+        // // Scanner scanner3 = new Scanner(filePath); 
+        // //     while (scanner3.hasNextLine()) {
+        // //         String line = scanner3.nextLine();
+        // //         words[i] = new Word(line, scrabbleSet);
+        // //         System.out.println("The point value for the word " + line + " is " + words[i].getScore());
+        // //         i++;
+        // //     }
+        // // //store all the scores in a new txt file
+        // // FileWriter writer = new FileWriter("scores.txt");
+        // // for (int j = 0; j < i; j++) {
+        // //     //write the word and its corresponding score
+        // //     writer.write(words[j].getWord() + " " + words[j].getScore() + "\n");
+        // // }
         
 
-        //calculate the score of each word in the file and store all the scores in a new txt file
-        Scanner scanner3 = new Scanner(filePath);
-        FileWriter writer = new FileWriter("scores.txt");
-        while (scanner3.hasNextLine()) {
-            String line = scanner3.nextLine();
-            words[i] = new Word(line, scrabbleSet);
-            writer.write(words[i].getWord() + " " + words[i].getScore() + "\n");
-            i++;
-        }
-        
+        // //calculate the score of each word in the file and store all the scores in a new txt file
+        // Scanner scanner2 = new Scanner(filePath);
+        // FileWriter writer = new FileWriter("scores.txt");
+        // while (scanner2.hasNextLine()) {
+        //     String line = scanner2.nextLine();
+        //     words[i] = new Word(line, scrabbleSet);
+        //     writer.write(words[i].getWord() + " " + words[i].getScore() + "\n");
+        //     i++;
+        // }
+        List<String> listOfWords = new ArrayList<String>(); 
+
+        //InputStream inputStream = ScrabbleProjectDriver.class.getResourceAsStream("/" + filePath);
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream)) {
+        String line;
+            while ((line = br.readLine()) != null) {
+                String[] words = line.split("\\s+");
+                for (String word : words) {
+                    listOfWords.add(word);                  
+                }
+            }
+        } 
         //tell the user the file has been created
         System.out.println("The file of scores has been created");
-        scanner3.close();
+        scanner2.close();
         writer.close();
-    }
     else {
         System.out.println("Your word was: " + word.toUpperCase());
         scanner.close();
@@ -276,7 +290,8 @@ public class ScrabbleProjectDriver {
         Word userWord = new Word(word, scrabbleSet);
         System.out.println("The point value for the word " + word + " is " + userWord.getScore());  
     }
-} 
+    }
+    }
 
    /**
     * This method swaps two objects in an array
