@@ -1,19 +1,8 @@
 package edu.guilford;
 
 import java.io.BufferedReader;
-import java.io.FileWriter;
-//import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-//import java.util.Arrays;
-// import java.io.InputStream;
-// import java.io.InputStreamReader;
-// import java.util.ArrayList;
-// import java.util.List;
-// import java.io.BufferedReader;
-//import java.io.FileReader;
+import java.io.FileReader;
 import java.util.Scanner;
 
 /**This is a driver program for the Scrabble Project that tests the Word, Tile, and ScrabbleSet classes
@@ -26,9 +15,6 @@ import java.util.Scanner;
 
 public class ScrabbleProjectDriver {
     public static void main(String[] args) throws IOException {
-        //Instantiate two ScrabbleSet objects, one for standard English and one using the random constructor.
-
-
         //PROJECT 1
 
         // //store words in word objects
@@ -225,8 +211,14 @@ public class ScrabbleProjectDriver {
 
     //PROJECT 6
     Scanner scanner = new Scanner(System.in);
-    System.out.println("Enter a language: ");
-    ScrabbleSet scrabbleSet = new ScrabbleSet(scanner.nextLine());
+    ScrabbleSet scrabbleSet;
+    try {
+        System.out.println("Enter a language: ");
+        scrabbleSet = new ScrabbleSet(scanner.nextLine());
+    } catch (Exception e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
     System.out.println("Enter a word: ");
     String word = scanner.nextLine();
     if (word.equals("no") || word.equals("NO") || word.equals("No")) {
@@ -238,193 +230,171 @@ public class ScrabbleProjectDriver {
         System.out.println("Enter the full name of the file you wish to analyze: ");
         String filePath = scanner.nextLine();
         System.out.println("The filename is: " + filePath);
+        String truefilePath = "target/classes/" + filePath;
         scanner.close();
+
         // //create a Word object using the user input and calculate its score
-        // Word[] words = new Word[1000];
-        // int i = 0;
-        // // //calculate the score of each word in the file
-        // // Scanner scanner3 = new Scanner(filePath); 
-        // //     while (scanner3.hasNextLine()) {
-        // //         String line = scanner3.nextLine();
-        // //         words[i] = new Word(line, scrabbleSet);
-        // //         System.out.println("The point value for the word " + line + " is " + words[i].getScore());
-        // //         i++;
-        // //     }
-        // // //store all the scores in a new txt file
-        // // FileWriter writer = new FileWriter("scores.txt");
-        // // for (int j = 0; j < i; j++) {
-        // //     //write the word and its corresponding score
-        // //     writer.write(words[j].getWord() + " " + words[j].getScore() + "\n");
-        // // }
-        
+        Word[] words = new Word[1000];
+        int i = 0;
 
-        // //calculate the score of each word in the file and store all the scores in a new txt file
-        // Scanner scanner2 = new Scanner(filePath);
-        // FileWriter writer = new FileWriter("scores.txt");
-        // while (scanner2.hasNextLine()) {
-        //     String line = scanner2.nextLine();
-        //     words[i] = new Word(line, scrabbleSet);
-        //     writer.write(words[i].getWord() + " " + words[i].getScore() + "\n");
-        //     i++;
-        // }
-        List<String> listOfWords = new ArrayList<String>(); 
-
-        //InputStream inputStream = ScrabbleProjectDriver.class.getResourceAsStream("/" + filePath);
-        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream)) {
+        //create a BufferedReader object to read in data from the file
+        BufferedReader br = new BufferedReader(new FileReader(truefilePath));
         String line;
-            while ((line = br.readLine()) != null) {
-                String[] words = line.split("\\s+");
-                for (String word : words) {
-                    listOfWords.add(word);                  
-                }
-            }
+        while ((line = br.readLine()) != null) {
+            words[i] = new Word(line, scrabbleSet);
+            System.out.println("The point value for the word " + line + " is " + words[i].getScore());
+            i++;
+        }
+        br.close();
         } 
-        //tell the user the file has been created
-        System.out.println("The file of scores has been created");
-        scanner2.close();
-        writer.close();
-    else {
+        
+        else {
         System.out.println("Your word was: " + word.toUpperCase());
         scanner.close();
         //create a Word object using the user input and calculate its score
         Word userWord = new Word(word, scrabbleSet);
         System.out.println("The point value for the word " + word + " is " + userWord.getScore());  
-    }
-    }
+         }
     }
 
-   /**
-    * This method swaps two objects in an array
-    * @param array the array of random word objects
-    * @param i the first object's location in the array
-    * @param j the second object's location in the array
-    */
-    public static void swap (Object[] array, int i, int j) {
-        Object temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }      
-   /**
-    * This method sorts an array of random word objects using the selection sort algorithm
-    * @param arr the array of random word objects
-    */ 
-    public static void selectionSort(Word[] arr) {
-     for (int i = 0; i < arr.length - 1; i++) {
-          int minIndex = i;
-          for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j].getScore() < arr[minIndex].getScore()) {
-                 minIndex = j;
-                }
-          }
-          Word temp = arr[minIndex];
-          arr[minIndex] = arr[i];
-          arr[i] = temp;
-     }
+    public static class ScannerException extends Exception {
+        public ScannerException(String message) {
+            super(message);
+        }
+    }
+
+//    /**
+//     * This method swaps two objects in an array
+//     * @param array the array of random word objects
+//     * @param i the first object's location in the array
+//     * @param j the second object's location in the array
+//     */
+//     public static void swap (Object[] array, int i, int j) {
+//         Object temp = array[i];
+//         array[i] = array[j];
+//         array[j] = temp;
+//     }      
+//    /**
+//     * This method sorts an array of random word objects using the selection sort algorithm
+//     * @param arr the array of random word objects
+//     */ 
+//     public static void selectionSort(Word[] arr) {
+//      for (int i = 0; i < arr.length - 1; i++) {
+//           int minIndex = i;
+//           for (int j = i + 1; j < arr.length; j++) {
+//                 if (arr[j].getScore() < arr[minIndex].getScore()) {
+//                  minIndex = j;
+//                 }
+//           }
+//           Word temp = arr[minIndex];
+//           arr[minIndex] = arr[i];
+//           arr[i] = temp;
+//      }
                
-    }
-    /**
-     * The partition method that partitions the array into two parts, before and after the pivot
-     * @param array the array of random word objects
-     * @param low the left "low" pointer
-     * @param high the right "high" pointer
-     * @return the final place of the pivot
-     */
-    public static int partition(Word[] array, int low, int high) {
-        //low is start of array, high is end, find pivot (middle)
-        int pivot = (low + high) / 2;
-        swap(array,pivot,high);
-        Word pivotValue = array[high]; //value of the pivot (the word)
-        //creating left and right pointers
-        int left = low;
-        int right = high - 1;
+//     }
+//     /**
+//      * The partition method that partitions the array into two parts, before and after the pivot
+//      * @param array the array of random word objects
+//      * @param low the left "low" pointer
+//      * @param high the right "high" pointer
+//      * @return the final place of the pivot
+//      */
+//     public static int partition(Word[] array, int low, int high) {
+//         //low is start of array, high is end, find pivot (middle)
+//         int pivot = (low + high) / 2;
+//         swap(array,pivot,high);
+//         Word pivotValue = array[high]; //value of the pivot (the word)
+//         //creating left and right pointers
+//         int left = low;
+//         int right = high - 1;
 
-        //while the pointers have not crossed paths
-        while (left <= right) {
-            while (left < high && array[left].compareTo(pivotValue) < 0) {
-                left++;
-                //results in the first object greater than the pivot
-            }
-            while (right >= 0 && (array[right]).compareTo(pivotValue) > 0) {
-                right--;
-                //results in the first object less than the pivot
-            }
-            //swap the two objects under condition that the objects still haven't crossed paths
-            if (left <= right) {
-                swap(array,left,right);
-                left++;
-                right--;
-            }
-        }
-        //after the pointers cross paths, swap the two objects
-        swap(array,high,left); //now the pivot is in the correct place
-        return left; //report the final place of the pivot
-    }
-    /**
-     * This method sorts an array of random word objects using the quick sort algorithm
-     * @param array the array of random word objects
-     * @param low the left "low" pointer
-     * @param high the right "high" pointer
-     */
-    public static void quickSort(Word[] array, int low, int high) {
-        if (low < high) {
-            int pivot = partition(array,low,high);
-            quickSort(array, low, (pivot - 1));
-            quickSort(array, (pivot + 1) ,high);
-        }
-    }
-    /**
-     * This method sorts an array of random word objects using the recursive quick sort algorithm
-     * @param array the array of random word objects
-     */
-    public static void quickSort(Word[] array) {
-        quickSort(array, 0, ((array.length) - 1));
-    }
+//         //while the pointers have not crossed paths
+//         while (left <= right) {
+//             while (left < high && array[left].compareTo(pivotValue) < 0) {
+//                 left++;
+//                 //results in the first object greater than the pivot
+//             }
+//             while (right >= 0 && (array[right]).compareTo(pivotValue) > 0) {
+//                 right--;
+//                 //results in the first object less than the pivot
+//             }
+//             //swap the two objects under condition that the objects still haven't crossed paths
+//             if (left <= right) {
+//                 swap(array,left,right);
+//                 left++;
+//                 right--;
+//             }
+//         }
+//         //after the pointers cross paths, swap the two objects
+//         swap(array,high,left); //now the pivot is in the correct place
+//         return left; //report the final place of the pivot
+//     }
+//     /**
+//      * This method sorts an array of random word objects using the quick sort algorithm
+//      * @param array the array of random word objects
+//      * @param low the left "low" pointer
+//      * @param high the right "high" pointer
+//      */
+//     public static void quickSort(Word[] array, int low, int high) {
+//         if (low < high) {
+//             int pivot = partition(array,low,high);
+//             quickSort(array, low, (pivot - 1));
+//             quickSort(array, (pivot + 1) ,high);
+//         }
+//     }
+//     /**
+//      * This method sorts an array of random word objects using the recursive quick sort algorithm
+//      * @param array the array of random word objects
+//      */
+//     public static void quickSort(Word[] array) {
+//         quickSort(array, 0, ((array.length) - 1));
+//     }
 
-    /**
-     * This method searches for a target word in an array of random word objects using the sequential search algorithm
-     * @param array the array of random word objects
-     * @param target the target word 
-     * @return the index of the target word
-     */
-    public static int sequentialSearch(Word[] array, Word target) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].compareTo(target) == 0) {
-                return i;
-            }
-        }
-        return -1;
-    }
+//     /**
+//      * This method searches for a target word in an array of random word objects using the sequential search algorithm
+//      * @param array the array of random word objects
+//      * @param target the target word 
+//      * @return the index of the target word
+//      */
+//     public static int sequentialSearch(Word[] array, Word target) {
+//         for (int i = 0; i < array.length; i++) {
+//             if (array[i].compareTo(target) == 0) {
+//                 return i;
+//             }
+//         }
+//         return -1;
+//     }
 
-    /**
-     * This method searches for a target word in an array of random word objects using the binary search algorithm
-     * @param array the array of random word objects
-     * @param target the target word
-     * @return the index of the target word
-     */
-    public static int binarySearch(Word[] array, Word target) {
-        return binarySearch(array, target, 0, array.length - 1);
-    }
-    /**
-     * This method searches for a target word in an array of random word objects using the recursive binary search algorithm
-     * @param array the array of random word objects
-     * @param target the target word
-     * @param low the left "low" pointer
-     * @param high the right "high" pointer
-     * @return the index of the target word
-     */
-    public static int binarySearch(Word[] array, Word target, int low, int high) {
-        if (low > high) { //base case
-            return -1;
-        }
-        int mid = (low + high) / 2;
-        if (array[mid].compareTo(target) == 0) { //success
-            return mid;
-        //choose a smaller problem to solve
-        } else if (array[mid].compareTo(target) > 0) {
-            return binarySearch(array, target, low, mid - 1);
-        } else {
-            return binarySearch(array, target, mid + 1, high);
-        }
-    }
+//     /**
+//      * This method searches for a target word in an array of random word objects using the binary search algorithm
+//      * @param array the array of random word objects
+//      * @param target the target word
+//      * @return the index of the target word
+//      */
+//     public static int binarySearch(Word[] array, Word target) {
+//         return binarySearch(array, target, 0, array.length - 1);
+//     }
+//     /**
+//      * This method searches for a target word in an array of random word objects using the recursive binary search algorithm
+//      * @param array the array of random word objects
+//      * @param target the target word
+//      * @param low the left "low" pointer
+//      * @param high the right "high" pointer
+//      * @return the index of the target word
+//      */
+//     public static int binarySearch(Word[] array, Word target, int low, int high) {
+//         if (low > high) { //base case
+//             return -1;
+//         }
+//         int mid = (low + high) / 2;
+//         if (array[mid].compareTo(target) == 0) { //success
+//             return mid;
+//         //choose a smaller problem to solve
+//         } else if (array[mid].compareTo(target) > 0) {
+//             return binarySearch(array, target, low, mid - 1);
+//         } else {
+//             return binarySearch(array, target, mid + 1, high);
+//         }
+    
 }
  

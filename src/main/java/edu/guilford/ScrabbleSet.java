@@ -126,7 +126,7 @@ public class ScrabbleSet {
         }
         //if the language is something else
         else {
-            System.out.println("Error: language not English");
+            //System.out.println("Error: language not English");
         }
     }
 
